@@ -1,7 +1,7 @@
 ﻿
 namespace DevExpress
 {
-    partial class XtraForm1
+    partial class GridForm2
     {
         /// <summary>
         /// Required designer variable.
@@ -31,8 +31,6 @@ namespace DevExpress
         {
             this.uiGrid_Main = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.uBtn_Add = new DevExpress.XtraEditors.SimpleButton();
-            this.uBtn_Delete = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.uiGrid_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +40,7 @@ namespace DevExpress
             this.uiGrid_Main.Location = new System.Drawing.Point(12, 12);
             this.uiGrid_Main.MainView = this.gridView1;
             this.uiGrid_Main.Name = "uiGrid_Main";
-            this.uiGrid_Main.Size = new System.Drawing.Size(1192, 767);
+            this.uiGrid_Main.Size = new System.Drawing.Size(776, 405);
             this.uiGrid_Main.TabIndex = 0;
             this.uiGrid_Main.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -52,32 +50,14 @@ namespace DevExpress
             this.gridView1.GridControl = this.uiGrid_Main;
             this.gridView1.Name = "gridView1";
             // 
-            // uBtn_Add
+            // GridForm
             // 
-            this.uBtn_Add.Location = new System.Drawing.Point(823, 785);
-            this.uBtn_Add.Name = "uBtn_Add";
-            this.uBtn_Add.Size = new System.Drawing.Size(159, 63);
-            this.uBtn_Add.TabIndex = 1;
-            this.uBtn_Add.Text = "Add";
-            // 
-            // uBtn_Delete
-            // 
-            this.uBtn_Delete.Location = new System.Drawing.Point(1010, 785);
-            this.uBtn_Delete.Name = "uBtn_Delete";
-            this.uBtn_Delete.Size = new System.Drawing.Size(159, 63);
-            this.uBtn_Delete.TabIndex = 2;
-            this.uBtn_Delete.Text = "Delete";
-            // 
-            // XtraForm1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 860);
-            this.Controls.Add(this.uBtn_Delete);
-            this.Controls.Add(this.uBtn_Add);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.uiGrid_Main);
-            this.Name = "XtraForm1";
-            this.Text = "XtraForm1";
+            this.Name = "GridForm";
+            this.Text = "GridForm";
             ((System.ComponentModel.ISupportInitialize)(this.uiGrid_Main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -88,7 +68,5 @@ namespace DevExpress
 
         private XtraGrid.GridControl uiGrid_Main;
         private XtraGrid.Views.Grid.GridView gridView1;
-        private XtraEditors.SimpleButton uBtn_Add;
-        private XtraEditors.SimpleButton uBtn_Delete;
     }
 }

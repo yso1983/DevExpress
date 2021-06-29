@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,15 @@ namespace DevExpress
 {
     public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
     {
+        //콤보박스 객체 선언
+        private RepositoryItemComboBox gradeComboBox;
         public XtraForm1()
         {
             InitializeComponent();
 
             this.Shown += DevForm_Shown;
+            this.uBtn_Add.Click += UBtn_Add_Click;
+            this.uBtn_Delete.Click += UBtn_Delete_Click;
         }
 
         private void DevForm_Shown(object sender, EventArgs e)
@@ -26,6 +31,29 @@ namespace DevExpress
             InitGridCOntrol();
 
             this.uiGrid_Main.DataSource = GetData();
+
+            //콤보박스 선언
+            this.gradeComboBox = new RepositoryItemComboBox();
+            this.gridView1.Columns[2].ColumnEdit = this.gradeComboBox;
+            InitializeComboBoxEdit();
+        }
+        private void UBtn_Delete_Click(object sender, EventArgs e)
+        {
+            gridView1.DeleteRow(gridView1.FocusedRowHandle);
+        }
+
+        private void UBtn_Add_Click(object sender, EventArgs e)
+        {
+            gridView1.AddNewRow();
+        }
+
+        private void InitializeComboBoxEdit()
+        {
+            DevExpressHelper.ClearComboBoxEditData(this.gradeComboBox);
+            DevExpressHelper.SetComboBoxEditData(this.gradeComboBox, "1", "2", "3", "4");
+
+            this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "Grade", gradeComboBox.Items[0]);
+            this.gradeComboBox.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
         }
 
         private DataTable GetData()
@@ -51,10 +79,10 @@ namespace DevExpress
         {
             GridView gv = this.uiGrid_Main.MainView as GridView;
             gv.OptionsView.ShowGroupPanel = false;
-            gv.OptionsBehavior.Editable = false;
+            gv.OptionsBehavior.Editable = true;
 
             //Row Cell 스타일 이벤트 선언
-            gv.RowCellStyle += DevForm_RowCellStyle;
+            //gv.RowCellStyle += DevForm_RowCellStyle;
         }
 
         private void DevForm_RowCellStyle(object sender, RowCellStyleEventArgs e)
@@ -83,6 +111,22 @@ namespace DevExpress
             if (row.Equals("홍길동"))
             {
                 e.Appearance.BackColor = Color.OrangeRed;
+            }
+        }
+    }
+
+    public class DevExpressHelper
+    {
+        public static void ClearComboBoxEditData(RepositoryItemComboBox sourceControl)
+        {
+            sourceControl.Items.Clear();
+        }
+
+        public static void SetComboBoxEditData(RepositoryItemComboBox sourceControl, params string[] itemValueArray)
+        {
+            foreach (var itemValue in itemValueArray)
+            {
+                sourceControl.Items.Add(itemValue);
             }
         }
     }
